@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+void transpose(int sparse[][3], int size) {
+    int result[size][3];
+    result[0][0] = sparse[0][1];
+    result[0][1] = sparse[0][0];
+    result[0][2] = sparse[0][2];
+
+    int k = 1;
+    for (int col = 0; col < sparse[0][1]; col++) {
+        for (int i = 1; i <= sparse[0][2]; i++) {
+            if (sparse[i][1] == col) {
+                result[k][0] = sparse[i][1];
+                result[k][1] = sparse[i][0];
+                result[k][2] = sparse[i][2];
+                k++;
+            }
+        }
+    }
+
+    cout << "Transpose:\n";
+    for (int i = 0; i <= sparse[0][2]; i++)
+        cout << result[i][0] << " " << result[i][1] << " " << result[i][2] << endl;
+}
